@@ -7,7 +7,6 @@ ENTRYPOINT []
 
 COPY ./us-east-1-bundle.pem /home
 RUN chmod +x /home/us-east-1-bundle.pem
-RUN chown node:node /home/us-east-1-bundle.pem
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 CMD ["/entrypoint.sh"]
