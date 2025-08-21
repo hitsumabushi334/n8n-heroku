@@ -6,6 +6,10 @@ WORKDIR /home/node/packages/cli
 ENTRYPOINT []
 RUN corepack enable && corepack prepare pnpm@9 --activate
 
+ENV PNPM_HOME=/usr/local/share/pnpm
+ENV PATH=${PNPM_HOME}:${PATH}
+RUN mkdir -p ${PNPM_HOME}
+
 # 作業先フォルダを専用に
 ENV N8N_EXT_DIR=/usr/local/share/n8n-extensions
 RUN mkdir -p $N8N_EXT_DIR
