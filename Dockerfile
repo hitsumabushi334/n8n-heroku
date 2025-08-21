@@ -10,8 +10,9 @@ ENV PNPM_HOME=/usr/local/share/pnpm
 ENV PATH=${PNPM_HOME}:${PATH}
 RUN mkdir -p ${PNPM_HOME}
 
-RUN pnpm add -g n8n-nodes-docx-converter
-RUN pnpm add -g @brave/n8n-nodes-brave-search
+RUN mkdir -p /usr/local/share/node_modules \
+  && pnpm add -g --prod --prefix /usr/local/share/node_modules n8n-nodes-docx-converter
+RUN pnpm add -g --prod --prefix /usr/local/share/node_modules @brave/n8n-nodes-brave-search
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 CMD ["/entrypoint.sh"]
